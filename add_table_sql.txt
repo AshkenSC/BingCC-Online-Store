@@ -1,0 +1,25 @@
+CREATE TABLE [dbo].[AspNetOrders]
+(
+	[OrderId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY, 
+    [OrderDate] DATE NOT NULL, 
+    [OrderFreight] FLOAT NOT NULL DEFAULT 0, 
+    [OrderTotalPrice] FLOAT NOT NULL,
+	[UserId] NVARCHAR(128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+)
+
+CREATE TABLE [dbo].[AspNetProducts]
+(
+	[ProductId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	[ProductName] NVARCHAR(128) NOT NULL,
+	[ProductPrice] FLOAT NOT NULL, 
+    [ProductIntro] VARCHAR(300) NULL, 
+    [ProductImage] VARCHAR(300) NULL,
+)
+
+CREATE TABLE [dbo].[AspNetOrderProducts]
+(
+	[OrderProductId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	[UserId] NVARCHAR(128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[ProductId] INT NOT NULL FOREIGN KEY REFERENCES AspNetProducts(ProductId),
+	[OrderId] INT NOT NULL FOREIGN KEY REFERENCES AspNetOrders(OrderId)
+)
