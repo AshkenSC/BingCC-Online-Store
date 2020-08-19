@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -168,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AspNetProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -198,6 +201,36 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetOrderProducts.cs">
+      <DependentUpon>BingCC_DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetOrders.cs">
+      <DependentUpon>BingCC_DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetProducts.cs">
+      <DependentUpon>BingCC_DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>BingCC_DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>BingCC_DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BingCC_DataModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BingCC_DataModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BingCC_DataModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BingCC_DataModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BingCC_DataModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BingCC_DataModels.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
@@ -213,8 +246,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\BingCC_DataModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BingCC_DataModels.edmx</DependentUpon>
+      <LastGenOutput>BingCC_DataModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BingCC_DataModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BingCC_DataModels.edmx</DependentUpon>
+      <LastGenOutput>BingCC_DataModels.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\BingCC_DataModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BingCC_DataModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BingCC_DataModels.edmx.diagram">
+      <DependentUpon>BingCC_DataModels.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -265,9 +315,16 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Details.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\AspNetProducts\Create.cshtml" />
+    <Content Include="Views\AspNetProducts\Delete.cshtml" />
+    <Content Include="Views\AspNetProducts\Details.cshtml" />
+    <Content Include="Views\AspNetProducts\Edit.cshtml" />
+    <Content Include="Views\AspNetProducts\Index.cshtml" />
+    <Content Include="Views\AspNetProducts\IndexAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -298,6 +355,9 @@
     <EmbeddedResource Include="Migrations\202008101229367_role.resx">
       <DependentUpon>202008101229367_role.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

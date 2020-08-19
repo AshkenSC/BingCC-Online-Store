@@ -1,0 +1,50 @@
+﻿@model BingCC.Models.AspNetProducts
+
+@{
+    ViewBag.Title = "Item Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AspNetProducts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Product name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            Price
+        </dt>
+
+        <dd>
+            ￥@Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+
+        <dt>
+            Introduction
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductIntro)
+        </dd>
+
+        <dt>
+            Image
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.ProductImage)*@
+            <img src="~/images/products/1.jpg" alt="Sample Photo" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

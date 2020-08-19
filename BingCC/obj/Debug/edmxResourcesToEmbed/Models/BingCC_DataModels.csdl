@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BingCC_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetOrderProducts">
+    <Key>
+      <PropertyRef Name="OrderProductId" />
+    </Key>
+    <Property Name="OrderProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetOrders" Relationship="Self.FK__AspNetOrd__Order__66603565" FromRole="AspNetOrderProducts" ToRole="AspNetOrders" />
+    <NavigationProperty Name="AspNetProducts" Relationship="Self.FK__AspNetOrd__Produ__656C112C" FromRole="AspNetOrderProducts" ToRole="AspNetProducts" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetOrd__UserI__6477ECF3" FromRole="AspNetOrderProducts" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetOrders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OrderFreight" Type="Double" Nullable="false" />
+    <Property Name="OrderTotalPrice" Type="Double" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetOrderProducts" Relationship="Self.FK__AspNetOrd__Order__66603565" FromRole="AspNetOrders" ToRole="AspNetOrderProducts" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetOrd__UserI__5DCAEF64" FromRole="AspNetOrders" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetProducts">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductPrice" Type="Double" Nullable="false" />
+    <Property Name="ProductIntro" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ProductImage" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetOrderProducts" Relationship="Self.FK__AspNetOrd__Produ__656C112C" FromRole="AspNetProducts" ToRole="AspNetOrderProducts" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetOrderProducts" Relationship="Self.FK__AspNetOrd__UserI__6477ECF3" FromRole="AspNetUsers" ToRole="AspNetOrderProducts" />
+    <NavigationProperty Name="AspNetOrders" Relationship="Self.FK__AspNetOrd__UserI__5DCAEF64" FromRole="AspNetUsers" ToRole="AspNetOrders" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <Association Name="FK__AspNetOrd__Order__66603565">
+    <End Role="AspNetOrders" Type="Self.AspNetOrders" Multiplicity="1" />
+    <End Role="AspNetOrderProducts" Type="Self.AspNetOrderProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetOrders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="AspNetOrderProducts">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AspNetOrd__Produ__656C112C">
+    <End Role="AspNetProducts" Type="Self.AspNetProducts" Multiplicity="1" />
+    <End Role="AspNetOrderProducts" Type="Self.AspNetOrderProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetProducts">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="AspNetOrderProducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AspNetOrd__UserI__6477ECF3">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetOrderProducts" Type="Self.AspNetOrderProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetOrderProducts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AspNetOrd__UserI__5DCAEF64">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetOrders" Type="Self.AspNetOrders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetOrders">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BingCC_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetOrderProducts" EntityType="Self.AspNetOrderProducts" />
+    <EntitySet Name="AspNetOrders" EntityType="Self.AspNetOrders" />
+    <EntitySet Name="AspNetProducts" EntityType="Self.AspNetProducts" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <AssociationSet Name="FK__AspNetOrd__Order__66603565" Association="Self.FK__AspNetOrd__Order__66603565">
+      <End Role="AspNetOrders" EntitySet="AspNetOrders" />
+      <End Role="AspNetOrderProducts" EntitySet="AspNetOrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AspNetOrd__Produ__656C112C" Association="Self.FK__AspNetOrd__Produ__656C112C">
+      <End Role="AspNetProducts" EntitySet="AspNetProducts" />
+      <End Role="AspNetOrderProducts" EntitySet="AspNetOrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AspNetOrd__UserI__6477ECF3" Association="Self.FK__AspNetOrd__UserI__6477ECF3">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetOrderProducts" EntitySet="AspNetOrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AspNetOrd__UserI__5DCAEF64" Association="Self.FK__AspNetOrd__UserI__5DCAEF64">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetOrders" EntitySet="AspNetOrders" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
