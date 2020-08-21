@@ -1,10 +1,15 @@
 ﻿@model BingCC.Models.AspNetProducts
+@using Microsoft.AspNet.Identity
+
 
 @{
     ViewBag.Title = "Item Details";
+    ViewBag.UserId = User.Identity.GetUserId();
+    ViewBag.ProductId = Model.ProductId;
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.UserId</h2>
+<h2>@ViewBag.ProductId</h2>
 
 <div>
     <h4>AspNetProducts</h4>
@@ -45,6 +50,13 @@
 
     </dl>
 </div>
+
+
+
+@*<input type="submit" value="Create" class="btn btn-default" />*@
+@Html.ActionLink("Add to cart", "SucceedAddToCart", "AspNetCartProducts", new { userId = ViewBag.UserId, productId = ViewBag.ProductId }, new { @class = "btn btn-danger btn-lg" })
+
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to List", "Index", "AspNetProducts", new { area = "" }, new { @class = "btn btn-danger btn-lg" })
 </p>

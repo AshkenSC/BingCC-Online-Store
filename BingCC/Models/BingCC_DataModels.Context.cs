@@ -30,5 +30,6 @@ namespace BingCC.Models
         public virtual DbSet<AspNetProducts> AspNetProducts { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetCartProducts> AspNetCartProducts { get; set; }
     }
 }

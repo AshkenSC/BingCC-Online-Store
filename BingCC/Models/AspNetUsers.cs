@@ -20,6 +20,7 @@ namespace BingCC.Models
             this.AspNetOrderProducts = new HashSet<AspNetOrderProducts>();
             this.AspNetOrders = new HashSet<AspNetOrders>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
+            this.AspNetCartProducts = new HashSet<AspNetCartProducts>();
         }
     
         public string Id { get; set; }
@@ -44,5 +45,7 @@ namespace BingCC.Models
         public virtual ICollection<AspNetOrders> AspNetOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetCartProducts> AspNetCartProducts { get; set; }
     }
 }

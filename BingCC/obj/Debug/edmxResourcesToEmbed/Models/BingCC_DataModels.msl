@@ -71,5 +71,14 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="AspNetCartProducts">
+      <EntityTypeMapping TypeName="BingCC_Model.AspNetCartProducts">
+        <MappingFragment StoreEntitySet="AspNetCartProducts">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CartProductId" ColumnName="CartProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

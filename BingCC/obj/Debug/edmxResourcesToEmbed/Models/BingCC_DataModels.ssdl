@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BingCC_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetCartProducts">
+    <Key>
+      <PropertyRef Name="CartProductId" />
+    </Key>
+    <Property Name="CartProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="AspNetOrderProducts">
     <Key>
       <PropertyRef Name="OrderProductId" />
@@ -65,6 +73,30 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Address" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
+  <Association Name="FK__AspNetCar__Produ__70DDC3D8">
+    <End Role="AspNetProducts" Type="Self.AspNetProducts" Multiplicity="1" />
+    <End Role="AspNetCartProducts" Type="Self.AspNetCartProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetProducts">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="AspNetCartProducts">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AspNetCar__UserI__6FE99F9F">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="AspNetCartProducts" Type="Self.AspNetCartProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetCartProducts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__AspNetOrd__Order__66603565">
     <End Role="AspNetOrders" Type="Self.AspNetOrders" Multiplicity="1" />
     <End Role="AspNetOrderProducts" Type="Self.AspNetOrderProducts" Multiplicity="*" />
@@ -142,12 +174,21 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="BingCC_ModelStoreContainer">
+    <EntitySet Name="AspNetCartProducts" EntityType="Self.AspNetCartProducts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetOrderProducts" EntityType="Self.AspNetOrderProducts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetOrders" EntityType="Self.AspNetOrders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetProducts" EntityType="Self.AspNetProducts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__AspNetCar__Produ__70DDC3D8" Association="Self.FK__AspNetCar__Produ__70DDC3D8">
+      <End Role="AspNetProducts" EntitySet="AspNetProducts" />
+      <End Role="AspNetCartProducts" EntitySet="AspNetCartProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AspNetCar__UserI__6FE99F9F" Association="Self.FK__AspNetCar__UserI__6FE99F9F">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetCartProducts" EntitySet="AspNetCartProducts" />
+    </AssociationSet>
     <AssociationSet Name="FK__AspNetOrd__Order__66603565" Association="Self.FK__AspNetOrd__Order__66603565">
       <End Role="AspNetOrders" EntitySet="AspNetOrders" />
       <End Role="AspNetOrderProducts" EntitySet="AspNetOrderProducts" />

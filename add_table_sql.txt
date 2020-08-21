@@ -23,3 +23,10 @@ CREATE TABLE [dbo].[AspNetOrderProducts]
 	[ProductId] INT NOT NULL FOREIGN KEY REFERENCES AspNetProducts(ProductId),
 	[OrderId] INT NOT NULL FOREIGN KEY REFERENCES AspNetOrders(OrderId)
 )
+
+CREATE TABLE [dbo].[AspNetCartProducts]
+(
+	[CartProductId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
+	[UserId] NVARCHAR(128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[ProductId] INT NOT NULL FOREIGN KEY REFERENCES AspNetProducts(ProductId)
+)

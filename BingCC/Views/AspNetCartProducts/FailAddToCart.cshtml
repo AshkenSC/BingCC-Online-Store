@@ -1,0 +1,14 @@
+﻿@model BingCC.Models.AspNetCartProducts
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}   
+
+<h2>The item is already in your cart!</h2>
+
+<p>Uh oh...</p>
+
+<p>
+    @Html.ActionLink("Go back", "Index", "AspNetProducts")
+</p>
