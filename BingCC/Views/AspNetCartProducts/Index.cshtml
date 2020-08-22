@@ -55,6 +55,8 @@
         </table>
 
         <h3>Total: ￥ @ViewBag.currentCartSum</h3>
+
+        @Html.ActionLink("Buy them all", "ConfirmOrder", "AspNetCartProducts", new { area = "" }, new { @class = "btn btn-danger btn-lg" })
     }
     else
     {

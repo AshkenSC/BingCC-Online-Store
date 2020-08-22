@@ -65,6 +65,12 @@ namespace BingCC.Controllers
             return View();
         }
 
+        public ActionResult ConfirmOrder()
+        {
+            var aspNetCartProducts = db.AspNetCartProducts.Include(a => a.AspNetProducts).Include(a => a.AspNetUsers);
+            return View(aspNetCartProducts.ToList());
+        }
+
 
         // GET: AspNetCartProducts/Create
         public ActionResult Create()

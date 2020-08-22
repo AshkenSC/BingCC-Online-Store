@@ -23,23 +23,33 @@
         <th></th>
     </tr>
 
-    @for (var i = 0; i < 5; i++)
+    @for (var i = 0; i < 4; i++)
     {
-        <tr>
-            <td>
-                @Html.ActionLink(@Model[i].ProductName, "Details", new { id = @Model[i].ProductId }, new { @class = "btn" })
-            </td>
-            <td>
-                ￥@Model[i].ProductPrice
-            </td>
-            <td>
-                <img src="@Model[i].ProductImage" alt="Sample Photo" />
-            </td>
-            <td>
-                @*<img src="~/images/products/1.jpg" alt="Sample Photo" />*@
-            </td>
-            
-        </tr>
+<tr>
+    <td>
+        @Html.ActionLink(@Model[i].ProductName, "Details", new { id = @Model[i].ProductId }, new { @class = "btn" })
+    </td>
+    <td>
+        ￥@Model[i].ProductPrice
+    </td>
+    @if (Model[i].ProductImage != null)
+    {
+        <td>
+            <img src="@Url.Content(Model[i].ProductImage)" class="img-responsive" alt="Sample Photo" />
+        </td>
+    }
+    else
+    {
+        <td>
+            <img src="@Model[i].ProductImage" class="img-responsive" alt="Sample Photo" />
+        </td>
+    }
+
+    <td>
+        @*<img src="~/images/products/1.jpg" alt="Sample Photo" />*@
+    </td>
+
+</tr>
     }
 
     @*@foreach (var item in Model)

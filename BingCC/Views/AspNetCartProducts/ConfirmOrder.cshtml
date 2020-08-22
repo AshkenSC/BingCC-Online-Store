@@ -1,0 +1,61 @@
+﻿@model IEnumerable<BingCC.Models.AspNetCartProducts>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // calculate current sum price in the cart
+    ViewBag.orderSum = 0;
+    foreach (var item in Model)
+    {
+        ViewBag.orderSum += item.AspNetProducts.ProductPrice;
+    }
+    ViewBag.shippingFee = (float)(int)(ViewBag.orderSum * 0.1);
+    ViewBag.orderSum = ViewBag.orderSum + ViewBag.shippingFee;
+}
+
+<h2>Confirm your order</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Product name
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.AspNetProducts.ProductName, "Details", "AspNetProducts", new { id = item.AspNetProducts.ProductId }, new { })
+            </td>
+            <td>
+                ￥@Html.DisplayFor(modelItem => item.AspNetProducts.ProductPrice)
+            </td>
+        </tr>
+    }
+</table>
+
+<b>Your name:</b> @Model.First().AspNetUsers.FirstName @Model.First().AspNetUsers.LastName
+<br />
+<b>Your address</b> @Model.First().AspNetUsers.Address
+<br />
+<b>Shipping fee (10%):</b> ￥@ViewBag.shippingFee
+<br />
+<h2><b>Total:</b> ￥@ViewBag.orderSum</h2>
+<br />
+
+@Html.ActionLink("Confirm & Buy!", "SucceedOrder", "AspNetOrders",
+    new
+    {
+        orderDate = System.DateTime.Today,
+        orderFreight = ViewBag.shippingFee,
+        orderTotal = ViewBag.orderSum,
+        userId = User.Identity.GetUserId()
+    },
+    new { @class = "btn btn-danger btn-lg" })

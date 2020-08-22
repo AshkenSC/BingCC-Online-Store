@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetCartProductsController.cs" />
+    <Compile Include="Controllers\AspNetOrdersController.cs" />
     <Compile Include="Controllers\AspNetProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -332,6 +333,13 @@
     <Content Include="Views\AspNetCartProducts\Index.cshtml" />
     <Content Include="Views\AspNetCartProducts\SucceedAddToCart.cshtml" />
     <Content Include="Views\AspNetCartProducts\FailAddToCart.cshtml" />
+    <Content Include="Views\AspNetOrders\Create.cshtml" />
+    <Content Include="Views\AspNetOrders\Delete.cshtml" />
+    <Content Include="Views\AspNetOrders\Details.cshtml" />
+    <Content Include="Views\AspNetOrders\Edit.cshtml" />
+    <Content Include="Views\AspNetOrders\Index.cshtml" />
+    <Content Include="Views\AspNetOrders\SucceedOrder.cshtml" />
+    <Content Include="Views\AspNetCartProducts\ConfirmOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

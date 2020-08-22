@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BingCC.Models.AspNetOrders>
+
+@{
+    ViewBag.Title = "My orders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderFreight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderTotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            ￥@Html.DisplayFor(modelItem => item.OrderFreight)
+        </td>
+        <td>
+            ￥@Html.DisplayFor(modelItem => item.OrderTotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUsers.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
+        </td>
+    </tr>
+}
+
+</table>

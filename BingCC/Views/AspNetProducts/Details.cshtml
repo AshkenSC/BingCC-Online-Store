@@ -43,11 +43,18 @@
             Image
         </dt>
 
-        <dd>
-            @*@Html.DisplayFor(model => model.ProductImage)*@
-            <img src="~/images/products/1.jpg" alt="Sample Photo" />
-        </dd>
-
+        @if (@Model.ProductImage != null)
+        {
+            <dd>
+                <img src="@Url.Content(Model.ProductImage)" class="img-responsive" alt="Sample Photo" />
+            </dd>
+        }
+        else
+        {
+            <dd>
+                <img src="@Model.ProductImage" class="img-responsive" alt="Sample Photo" />
+            </dd>
+        }
     </dl>
 </div>
 
