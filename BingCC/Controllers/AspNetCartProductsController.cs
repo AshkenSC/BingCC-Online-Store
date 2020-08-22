@@ -48,7 +48,7 @@ namespace BingCC.Controllers
             AspNetCartProducts aspNetCartProducts = new AspNetCartProducts();
             aspNetCartProducts.UserId = userId;
             aspNetCartProducts.ProductId = (int)productId;
-            if (db.AspNetCartProducts.SingleOrDefault(entry => entry.UserId == userId) == null)
+            if (db.AspNetCartProducts.SingleOrDefault(entry => entry.UserId == userId && entry.ProductId == productId) == null)
             {
                 db.AspNetCartProducts.Add(aspNetCartProducts);
                 db.SaveChanges();

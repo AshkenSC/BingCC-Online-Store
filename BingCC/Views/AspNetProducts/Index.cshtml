@@ -27,7 +27,7 @@
     {
         <tr>
             <td>
-                @Html.ActionLink(@Model[i].ProductName, "Details", new { id = @Model[i].ProductId })
+                @Html.ActionLink(@Model[i].ProductName, "Details", new { id = @Model[i].ProductId }, new { @class = "btn" })
             </td>
             <td>
                 ￥@Model[i].ProductPrice
