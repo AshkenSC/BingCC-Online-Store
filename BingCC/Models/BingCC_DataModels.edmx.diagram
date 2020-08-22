@@ -15,7 +15,7 @@
         <AssociationConnector Association="BingCC_Model.FK__AspNetOrd__UserI__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="BingCC_Model.FK__AspNetOrd__UserI__5DCAEF64" ManuallyRouted="false" />
         <AssociationConnector Association="BingCC_Model.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="BingCC_Model.AspNetCartProducts" Width="1.5" PointX="7.5" PointY="0.875" />
+        <EntityTypeShape EntityType="BingCC_Model.AspNetCartProducts" Width="1.75" PointX="7.5" PointY="0.875" />
         <AssociationConnector Association="BingCC_Model.FK__AspNetCar__Produ__70DDC3D8" />
         <AssociationConnector Association="BingCC_Model.FK__AspNetCar__UserI__6FE99F9F" />
       </Diagram>

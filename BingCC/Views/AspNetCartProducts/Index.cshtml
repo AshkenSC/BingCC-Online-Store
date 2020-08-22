@@ -4,6 +4,13 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // calculate current sum price in the cart
+    ViewBag.currentCartSum = 0;
+    foreach (var item in Model)
+    {
+        ViewBag.currentCartSum += item.AspNetProducts.ProductPrice;
+    }
 }
 
 @if (Request.IsAuthenticated)
@@ -11,8 +18,8 @@
     <h2>Cart</h2>
 
     @*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+            @Html.ActionLink("Create New", "Create")
+        </p>*@
     <table class="table">
         <tr>
             <th>
@@ -22,34 +29,36 @@
                 Price
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.AspNetUsers.Email)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+                </th>*@
 
-    @foreach(var item in Model)
-    {
-        <tr>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.AspNetProducts.ProductName)*@
-                @Html.ActionLink(item.AspNetProducts.ProductName, "Details", "AspNetProducts", new { id = item.AspNetProducts.ProductId }, new { })
-            </td>
-            <td>
-                ￥@Html.DisplayFor(modelItem => item.AspNetProducts.ProductPrice)
-            </td>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.AspNetProducts.ProductName)*@
+                    @Html.ActionLink(item.AspNetProducts.ProductName, "Details", "AspNetProducts", new { id = item.AspNetProducts.ProductId }, new { })
+                </td>
+                <td>
+                    ￥@Html.DisplayFor(modelItem => item.AspNetProducts.ProductPrice)
+                </td>
 
-            @*<td>
-                @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
-            </td>*@
-        <td>
-            @*@Html.ActionLink("Details", "Details", new { id = item.CartProductId }) |*@
-            @Html.ActionLink("Remove", "Delete", new { id = item.CartProductId })
-        </td>
-        </tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+                    </td>*@
+                <td>
+                    @*@Html.ActionLink("Details", "Details", new { id = item.CartProductId }) |*@
+                    @Html.ActionLink("Remove", "Delete", new { id = item.CartProductId })
+                </td>
+            </tr>
+        }
+        </table>
+
+        <h3>Total: ￥ @ViewBag.currentCartSum</h3>
     }
-    </table>
-}
-else 
-{ 
-    Response.Redirect("~/Account/Login");
-}
+    else
+    {
+        Response.Redirect("~/Account/Login");
+    }
 
 
