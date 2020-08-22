@@ -10,16 +10,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrderDate)
+            Order date         
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderFreight)
+            Shipping charge          
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderTotalPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUsers.Address)
+            Totacl cost           
         </th>
         <th></th>
     </tr>
@@ -27,21 +24,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.OrderDate)
+            @item.OrderDate.ToString("yyyy/MM/dd")
         </td>
         <td>
             ￥@Html.DisplayFor(modelItem => item.OrderFreight)
         </td>
         <td>
-            ￥@Html.DisplayFor(modelItem => item.OrderTotalPrice)
+            ￥@item.OrderTotalPrice.ToString(".00")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AspNetUsers.Address)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
+            @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
         </td>
     </tr>
 }
