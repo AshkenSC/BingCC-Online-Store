@@ -1,40 +1,51 @@
 ﻿@model IEnumerable<BingCC.Models.AspNetCartProducts>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@if (Request.IsAuthenticated)
+{
+    <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetProducts.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetProducts.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetProducts.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CartProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CartProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CartProductId })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetProducts.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CartProductId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CartProductId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CartProductId })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else 
+{ 
+    Response.Redirect("~/Account/Login");
 }
 
-</table>
+
