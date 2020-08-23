@@ -18,27 +18,33 @@ namespace BingCC.Controllers
         public ActionResult SucceedOrder(
             DateTime orderDate, float orderFreight, float orderTotal, string userId)
         {
-            AspNetOrders aspNetOrders = new AspNetOrders();
-            aspNetOrders.OrderDate = orderDate;
-            aspNetOrders.OrderFreight = orderFreight;
-            aspNetOrders.OrderTotalPrice = orderTotal;
-            aspNetOrders.UserId = userId;
+            AspNetOrders aspNetOrder = new AspNetOrders();
+            aspNetOrder.OrderDate = orderDate;
+            aspNetOrder.OrderFreight = orderFreight;
+            aspNetOrder.OrderTotalPrice = orderTotal;
+            aspNetOrder.UserId = userId;
             if (ModelState.IsValid)
             {
                 // add order record to order lisr
-                db.AspNetOrders.Add(aspNetOrders);
+                db.AspNetOrders.Add(aspNetOrder);
                 db.SaveChanges();
-                // TODO clean user's cart
+                // clean user's cart
+                // and add items to ordered item list
                 while (db.AspNetCartProducts.FirstOrDefault(entry => entry.UserId == userId) != null)
                 {
                     AspNetCartProducts itemInCart = db.AspNetCartProducts.FirstOrDefault(entry => entry.UserId == userId);
+                    AspNetOrderProducts itemInOrder = new AspNetOrderProducts();
+                    itemInOrder.OrderId = aspNetOrder.OrderId;
+                    itemInOrder.ProductId = itemInCart.ProductId;
+                    itemInOrder.UserId = userId;
+                    db.AspNetOrderProducts.Add(itemInOrder);
                     db.AspNetCartProducts.Remove(itemInCart);
                     db.SaveChanges();
                 }
                 return View();
             }
 
-            //ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", aspNetOrders.UserId);
+            //ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", aspNetOrder.UserId);
             return View();
         }
 
@@ -66,6 +72,22 @@ namespace BingCC.Controllers
             {
                 return HttpNotFound();
             }
+
+            // get bought items in the order, and store them in ViewBag
+            // -----
+            // first, get OrderProducts entries
+            IEnumerable<AspNetOrderProducts> itemIdInOrder =
+                db.AspNetOrderProducts.Where(entry => entry.OrderId == id);
+            // then get Products entries according to OrderProducts entries
+            IList<AspNetProducts> itemsInOrder = new List<AspNetProducts>();
+            foreach (var item in itemIdInOrder)
+            {
+                AspNetProducts product = db.AspNetProducts.FirstOrDefault(
+                    entry => entry.ProductId == item.ProductId);
+                itemsInOrder.Add(product);
+            }
+            ViewBag.itemsInOrder = itemsInOrder;
+
             return View(aspNetOrders);
         }
 

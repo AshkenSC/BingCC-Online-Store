@@ -5,14 +5,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Order Details</h2>
 
-<div>
-    <h4>AspNetOrders</h4>
+<table class="table">
+    <tr>
+        <th>
+            Product name
+        </th>
+        <th>
+            Product price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.itemsInOrder)
+    {
+        <tr>
+            <td>
+                @item.ProductName
+            </td>
+            <td>
+                ￥@item.ProductPrice
+            </td>
+        </tr>
+    }
+</table>
+
+<div align="left">
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.OrderDate)
+            Order date
         </dt>
 
         <dd>
@@ -20,31 +43,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderFreight)
+            Shipping charge
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderFreight)
+            ￥@Html.DisplayFor(model => model.OrderFreight)
         </dd>
 
         <dt>
-            ￥@Html.DisplayNameFor(model => model.OrderTotalPrice)
+            Total cost
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderTotalPrice)
+            ￥@Html.DisplayFor(model => model.OrderTotalPrice)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUsers.Email)
-        </dd>
-
     </dl>
 </div>
+
+
+
+
+
+
+
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }) |*@
     @Html.ActionLink("Back to List", "Index")
