@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using BingCC.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace BingCC.Controllers
 {
@@ -19,7 +20,15 @@ namespace BingCC.Controllers
         public ActionResult Index()
         {
             var aspNetCartProducts = db.AspNetCartProducts.Include(a => a.AspNetProducts).Include(a => a.AspNetUsers);
-            return View(aspNetCartProducts.ToList());
+            if (aspNetCartProducts.ToList().Count != 0)
+                return View(aspNetCartProducts.ToList());
+            else
+                return RedirectToAction("CartEmpty");
+        }
+
+        public ActionResult CartEmpty()
+        {
+            return View();
         }
 
         // GET: AspNetCartProducts/Details/5

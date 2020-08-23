@@ -340,6 +340,7 @@
     <Content Include="Views\AspNetOrders\Index.cshtml" />
     <Content Include="Views\AspNetOrders\SucceedOrder.cshtml" />
     <Content Include="Views\AspNetCartProducts\ConfirmOrder.cshtml" />
+    <Content Include="Views\AspNetCartProducts\CartEmpty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
