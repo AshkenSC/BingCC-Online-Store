@@ -5,38 +5,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Orders</h2>
+@if (Request.IsAuthenticated)
+{
+    <h2>Orders</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            Order date         
-        </th>
-        <th>
-            Shipping charge          
-        </th>
-        <th>
-            Totacl cost           
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                Order date
+            </th>
+            <th>
+                Shipping charge
+            </th>
+            <th>
+                Totacl cost
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @item.OrderDate.ToString("yyyy/MM/dd")
-        </td>
-        <td>
-            ￥@Html.DisplayFor(modelItem => item.OrderFreight)
-        </td>
-        <td>
-            ￥@item.OrderTotalPrice.ToString(".00")
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.OrderDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    ￥@Html.DisplayFor(modelItem => item.OrderFreight)
+                </td>
+                <td>
+                    ￥@item.OrderTotalPrice.ToString(".00")
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                </td>
+            </tr>
+        }
+
+    </table>
 }
-
-</table>
+else
+{
+    Response.Redirect("~/Account/Login");
+}

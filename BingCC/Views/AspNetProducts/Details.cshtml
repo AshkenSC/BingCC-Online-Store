@@ -8,21 +8,11 @@
     ViewBag.ProductId = Model.ProductId;
 }
 
-<h2>@ViewBag.UserId</h2>
-<h2>@ViewBag.ProductId</h2>
+<h2>@Html.DisplayFor(model => model.ProductName)</h2>
 
 <div>
-    <h4>AspNetProducts</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            Product name
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-
         <dt>
             Price
         </dt>
@@ -58,12 +48,19 @@
     </dl>
 </div>
 
-
-
 @*<input type="submit" value="Create" class="btn btn-default" />*@
-@Html.ActionLink("Add to cart", "SucceedAddToCart", "AspNetCartProducts", new { userId = ViewBag.UserId, productId = ViewBag.ProductId }, new { @class = "btn btn-danger btn-lg" })
 
-<p>
-    @*@Html.ActionLink("Back to List", "Index")*@
-    @Html.ActionLink("Back to List", "Index", "AspNetProducts", new { area = "" }, new { @class = "btn btn-danger btn-lg" })
-</p>
+
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Add to cart", "SucceedAddToCart", "AspNetCartProducts", new { userId = ViewBag.UserId, productId = ViewBag.ProductId }, new { @class = "btn btn-danger btn-lg" })
+}
+else
+{
+    @Html.ActionLink("Add to cart", "Login", "Account", new { userId = ViewBag.UserId, productId = ViewBag.ProductId }, new { @class = "btn btn-danger btn-lg" })
+
+}
+<br />
+<br />
+@*@Html.ActionLink("Back to List", "Index")*@
+@Html.ActionLink("Back to List", "Index", "AspNetProducts", new { area = "" }, new { @class = "btn btn-danger btn-lg" })
