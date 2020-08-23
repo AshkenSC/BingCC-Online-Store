@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,16 +22,32 @@
                 </button>
                 @Html.ActionLink("BingCC Online Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Buy", "Index", "AspNetProducts")</li>
-                    <li>@Html.ActionLink("Cart", "Index", "AspNetCartProducts")</li>
-                    <li>@Html.ActionLink("Orders", "Index", "AspNetOrders")</li>
-                    <li>@Html.ActionLink("Manage Roles", "Index", "Role")</li>
-                    <li>@Html.ActionLink("Manage Products", "IndexAdmin", "AspNetProducts")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+            @if (User.IsInRole("admin"))
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Buy", "Index", "AspNetProducts")</li>
+                        <li>@Html.ActionLink("Cart", "Index", "AspNetCartProducts")</li>
+                        <li>@Html.ActionLink("Orders", "Index", "AspNetOrders")</li>
+                        <li>@Html.ActionLink("Manage Roles", "Index", "Role")</li>
+                        <li>@Html.ActionLink("Manage Products", "IndexAdmin", "AspNetProducts")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+            else
+            {
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Buy", "Index", "AspNetProducts")</li>
+                        <li>@Html.ActionLink("Cart", "Index", "AspNetCartProducts")</li>
+                        <li>@Html.ActionLink("Orders", "Index", "AspNetOrders")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            }
+
         </div>
     </div>
     <div class="container body-content">
