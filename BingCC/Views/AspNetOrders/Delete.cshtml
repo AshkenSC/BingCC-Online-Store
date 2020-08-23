@@ -9,44 +9,63 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>AspNetOrders</h4>
+    <h4>Order information</h4>
     <hr />
+
+    <table class="table">
+        <tr>
+            <th>
+                Product name
+            </th>
+            <th>
+                Product price
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.itemsInOrder)
+        {
+            <tr>
+                <td>
+                    @item.ProductName
+                </td>
+                <td>
+                    ￥@item.ProductPrice
+                </td>
+            </tr>
+        }
+    </table>
+
+
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.OrderDate)
+            Order date
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderDate)
+            @Model.OrderDate.ToString("yyyy/MM/dd")
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderFreight)
+            Shipping charge
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderFreight)
+            ￥@Html.DisplayFor(model => model.OrderFreight)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OrderTotalPrice)
+            Total cost
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OrderTotalPrice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUsers.Email)
+            ￥@Html.DisplayFor(model => model.OrderTotalPrice)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

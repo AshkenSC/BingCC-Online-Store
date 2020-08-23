@@ -25,20 +25,22 @@ namespace BingCC.Controllers
             aspNetOrder.UserId = userId;
             if (ModelState.IsValid)
             {
-                // add order record to order lisr
+                // add order record to order list
                 db.AspNetOrders.Add(aspNetOrder);
                 db.SaveChanges();
                 // clean user's cart
                 // and add items to ordered item list
                 while (db.AspNetCartProducts.FirstOrDefault(entry => entry.UserId == userId) != null)
-                {
+                {                   
                     AspNetCartProducts itemInCart = db.AspNetCartProducts.FirstOrDefault(entry => entry.UserId == userId);
+                    db.AspNetCartProducts.Remove(itemInCart);
+
                     AspNetOrderProducts itemInOrder = new AspNetOrderProducts();
                     itemInOrder.OrderId = aspNetOrder.OrderId;
                     itemInOrder.ProductId = itemInCart.ProductId;
                     itemInOrder.UserId = userId;
                     db.AspNetOrderProducts.Add(itemInOrder);
-                    db.AspNetCartProducts.Remove(itemInCart);
+
                     db.SaveChanges();
                 }
                 return View();
@@ -161,6 +163,22 @@ namespace BingCC.Controllers
             {
                 return HttpNotFound();
             }
+
+
+            // in order to show items in order on delete confirm page
+            // store items in order into ViewBag
+            IEnumerable<AspNetOrderProducts> itemIdInOrder =
+                db.AspNetOrderProducts.Where(entry => entry.OrderId == id);
+            IList<AspNetProducts> itemsInOrder = new List<AspNetProducts>();
+            foreach (var item in itemIdInOrder)
+            {
+                AspNetProducts product = db.AspNetProducts.FirstOrDefault(
+                    entry => entry.ProductId == item.ProductId);
+                itemsInOrder.Add(product);
+            }
+            ViewBag.itemsInOrder = itemsInOrder;
+
+
             return View(aspNetOrders);
         }
 
@@ -169,9 +187,20 @@ namespace BingCC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            // delete items stored in AspNetOrderProducts
+            while (db.AspNetOrderProducts.FirstOrDefault(
+                entry => entry.OrderId == id) != null)
+            {
+                AspNetOrderProducts itemToDelete =
+                    db.AspNetOrderProducts.FirstOrDefault(entry => entry.OrderId == id);
+                db.AspNetOrderProducts.Remove(itemToDelete);
+                db.SaveChanges();
+            }
+
             AspNetOrders aspNetOrders = db.AspNetOrders.Find(id);
             db.AspNetOrders.Remove(aspNetOrders);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
