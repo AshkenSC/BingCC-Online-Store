@@ -14,6 +14,7 @@
     <EntitySetMapping Name="AspNetOrders">
       <EntityTypeMapping TypeName="BingCC_Model.AspNetOrders">
         <MappingFragment StoreEntitySet="AspNetOrders">
+          <ScalarProperty Name="OrderRate" ColumnName="OrderRate" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
           <ScalarProperty Name="OrderFreight" ColumnName="OrderFreight" />

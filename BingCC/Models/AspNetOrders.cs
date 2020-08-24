@@ -25,6 +25,7 @@ namespace BingCC.Models
         public double OrderFreight { get; set; }
         public double OrderTotalPrice { get; set; }
         public string UserId { get; set; }
+        public int OrderRate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetOrderProducts> AspNetOrderProducts { get; set; }

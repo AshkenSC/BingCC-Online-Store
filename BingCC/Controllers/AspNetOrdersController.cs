@@ -139,7 +139,7 @@ namespace BingCC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,OrderDate,OrderFreight,OrderTotalPrice,UserId")] AspNetOrders aspNetOrders)
+        public ActionResult Edit([Bind(Include = "OrderId,OrderDate,OrderFreight,OrderTotalPrice,UserId,OrderRate")] AspNetOrders aspNetOrders)
         {
             if (ModelState.IsValid)
             {

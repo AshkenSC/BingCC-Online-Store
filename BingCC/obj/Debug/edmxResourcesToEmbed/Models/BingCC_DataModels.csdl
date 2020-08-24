@@ -23,6 +23,7 @@
     <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="AspNetOrderProducts" Relationship="Self.FK__AspNetOrd__Order__66603565" FromRole="AspNetOrders" ToRole="AspNetOrderProducts" />
     <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetOrd__UserI__5DCAEF64" FromRole="AspNetOrders" ToRole="AspNetUsers" />
+    <Property Name="OrderRate" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetProducts">
     <Key>

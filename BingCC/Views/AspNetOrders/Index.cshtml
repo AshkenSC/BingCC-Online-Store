@@ -20,6 +20,9 @@
             <th>
                 Totacl cost
             </th>
+            <th>
+                Rate
+            </th>
             <th></th>
         </tr>
 
@@ -36,6 +39,10 @@
                     ￥@item.OrderTotalPrice.ToString(".00")
                 </td>
                 <td>
+                    @item.OrderRate / 10
+                </td>
+                <td>
+                    @Html.ActionLink("Rate", "Edit", new { id = item.OrderId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
                 </td>

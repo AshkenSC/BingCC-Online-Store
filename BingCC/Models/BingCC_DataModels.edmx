@@ -31,6 +31,7 @@
           <Property Name="OrderFreight" Type="float" Nullable="false" />
           <Property Name="OrderTotalPrice" Type="float" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="OrderRate" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetProducts">
           <Key>
@@ -246,6 +247,7 @@
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetOrderProducts" Relationship="Self.FK__AspNetOrd__Order__66603565" FromRole="AspNetOrders" ToRole="AspNetOrderProducts" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK__AspNetOrd__UserI__5DCAEF64" FromRole="AspNetOrders" ToRole="AspNetUsers" />
+          <Property Name="OrderRate" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetProducts">
           <Key>
@@ -433,6 +435,7 @@
           <EntitySetMapping Name="AspNetOrders">
             <EntityTypeMapping TypeName="BingCC_Model.AspNetOrders">
               <MappingFragment StoreEntitySet="AspNetOrders">
+                <ScalarProperty Name="OrderRate" ColumnName="OrderRate" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="OrderFreight" ColumnName="OrderFreight" />

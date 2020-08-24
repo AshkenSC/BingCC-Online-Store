@@ -26,6 +26,7 @@
     <Property Name="OrderFreight" Type="float" Nullable="false" />
     <Property Name="OrderTotalPrice" Type="float" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="OrderRate" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetProducts">
     <Key>
