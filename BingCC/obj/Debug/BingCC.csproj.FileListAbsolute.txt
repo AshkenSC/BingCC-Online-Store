@@ -296,6 +296,8 @@ D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Microsoft.Owin.Security.Twit
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Microsoft.Web.Infrastructure.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Newtonsoft.Json.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Owin.dll
+D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.dll
+D:\Projects\semester3\5032\bingcc_github\BingCC\bin\StarkbankEcdsa.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.Helpers.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.Mvc.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.Optimization.dll
@@ -304,6 +306,8 @@ D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.WebPages.Deployme
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.WebPages.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.WebPages.Razor.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\WebGrease.dll
+D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.pdb
+D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.xml
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.Helpers.xml
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.Mvc.xml
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\System.Web.Optimization.xml
@@ -328,6 +332,7 @@ D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Microsoft.Owin.Security.Twit
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Microsoft.Owin.Security.OAuth.xml
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.csprojAssemblyReference.cache
 D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.Migrations.InitialCreate.resources
 D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.Migrations.firstname.resources
 D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.Migrations.lastname.resources
@@ -338,8 +343,3 @@ D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.csproj.CoreComp
 D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.csproj.CopyComplete
 D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.pdb
-D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.dll
-D:\Projects\semester3\5032\bingcc_github\BingCC\bin\StarkbankEcdsa.dll
-D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.pdb
-D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.xml
-D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.csprojAssemblyReference.cache

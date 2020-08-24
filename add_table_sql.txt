@@ -1,3 +1,4 @@
+// add orders table
 CREATE TABLE [dbo].[AspNetOrders]
 (
 	[OrderId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY, 
@@ -7,6 +8,7 @@ CREATE TABLE [dbo].[AspNetOrders]
 	[UserId] NVARCHAR(128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
 )
 
+// add products table
 CREATE TABLE [dbo].[AspNetProducts]
 (
 	[ProductId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
@@ -16,6 +18,7 @@ CREATE TABLE [dbo].[AspNetProducts]
     [ProductImage] VARCHAR(300) NULL,
 )
 
+// add order products table
 CREATE TABLE [dbo].[AspNetOrderProducts]
 (
 	[OrderProductId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
@@ -24,6 +27,7 @@ CREATE TABLE [dbo].[AspNetOrderProducts]
 	[OrderId] INT NOT NULL FOREIGN KEY REFERENCES AspNetOrders(OrderId)
 )
 
+// add cart products table
 CREATE TABLE [dbo].[AspNetCartProducts]
 (
 	[CartProductId] INT IDENTITY(1, 1) NOT NULL PRIMARY KEY,
