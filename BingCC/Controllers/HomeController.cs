@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BingCC.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()

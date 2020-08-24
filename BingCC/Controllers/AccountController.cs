@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BingCC.Models;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 
 namespace BingCC.Controllers
 {
@@ -395,8 +396,15 @@ namespace BingCC.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { 
+                    UserName = model.Email, 
+                    Email = model.Email,
+                    FirstName = "Google",
+                    LastName = "User",
+                    Address = "Google user default address"
+               };
                 var result = await UserManager.CreateAsync(user);
+
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
@@ -407,6 +415,8 @@ namespace BingCC.Controllers
                     }
                 }
                 AddErrors(result);
+
+              
             }
 
             ViewBag.ReturnUrl = returnUrl;
