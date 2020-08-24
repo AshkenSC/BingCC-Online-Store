@@ -89,7 +89,7 @@ namespace BingCC.Controllers
             {
                 db.Entry(aspNetProducts).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexAdmin");
             }
             return View(aspNetProducts);
         }

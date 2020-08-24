@@ -342,4 +342,3 @@ D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\StarkbankEcdsa.dll
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.pdb
 D:\Projects\semester3\5032\bingcc_github\BingCC\bin\SendGrid.xml
-D:\Projects\semester3\5032\bingcc_github\BingCC\obj\Debug\BingCC.csprojAssemblyReference.cache

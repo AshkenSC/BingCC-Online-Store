@@ -29,7 +29,7 @@
         <th></th>
     </tr>
 
-    @for (var i = 0; i < 4; i++)
+    @for (var i = 0; i < Model.Count(); i++)
     {
 <tr>
     <td>
@@ -41,13 +41,13 @@
     @if (Model[i].ProductImage != null)
     {
         <td>
-            <img src="@Url.Content(Model[i].ProductImage)" class="img-responsive" alt="Sample Photo" />
+            <img src="@Url.Content(Model[i].ProductImage)" class="img-responsive" alt="Sample Photo" width="200"/>
         </td>
     }
     else
     {
         <td>
-            <img src="@Model[i].ProductImage" class="img-responsive" alt="Sample Photo" />
+            <img src="@Model[i].ProductImage" class="img-responsive" alt="Sample Photo"  />
         </td>
     }
 
